@@ -8,6 +8,7 @@ DeepSeek Harness Web 插件集合。每个插件一个目录，通过 profile �
 | 插件 | 说明 | 文档 |
 | --- | --- | --- |
 | [`dsh-d2-diagram`](./dsh-d2-diagram) | 把 `d2_render` 工具生成的 D2 图表内联显示在对话中，支持缩放、平移、源码查看与下载 | [中文](./dsh-d2-diagram/README.md) · [English](./dsh-d2-diagram/README.en.md) |
+| [`dsh-mermaid-diagram`](./dsh-mermaid-diagram) | 注册 `mermaid_render` 工具，把 Mermaid 源码渲染为 SVG 并在对话中显示，支持缩放、平移、源码查看与下载 | [中文](./dsh-mermaid-diagram/README.md) · [English](./dsh-mermaid-diagram/README.en.md) |
 
 ## 目录约定
 

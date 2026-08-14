@@ -1,0 +1,10 @@
+# dsh-mermaid-diagram bundle patch.
+#
+# Inserts this package's own host half as a row: it registers the
+# `mermaid_render` model tool and serves rendered SVGs at
+# /plugins/dsh-mermaid-diagram/svg/<id>. The row's loader entry also
+# qualifies the package for the `dsh.client` scan, which serves the
+# browser half at /plugins/dsh-mermaid-diagram/client.js.
+- insert:
+    - id: mermaid-diagram
+      name: dsh-mermaid-diagram

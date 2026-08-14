@@ -1,0 +1,30 @@
+{
+  "name": "dsh-mermaid-diagram",
+  "description": "Inline Mermaid diagram support for the conversation: a mermaid_render model tool plus a zoomable/panning tool card that displays the rendered SVG",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [],
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "mermaid": "^11.16.1",
+    "puppeteer-core": "^25.7.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "license": "MIT"
+}
