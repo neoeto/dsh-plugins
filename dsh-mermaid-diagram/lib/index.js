@@ -142,16 +142,15 @@ export function apply(ctx) {
 			properties: {
 				source: {
 					type: "string",
-					required: true,
 					description: "Complete Mermaid diagram source code.",
 				},
 				theme: {
 					type: "string",
-					required: false,
 					description: "Color theme. Defaults to \"default\"; \"dark\" suits dark UI backgrounds.",
 					enum: THEMES,
 				},
 			},
+			required: ["source"],
 			additionalProperties: false,
 		},
 		output: {
