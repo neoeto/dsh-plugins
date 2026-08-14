@@ -29,6 +29,9 @@ window.__ModuleLoader__.load({
 				".d2d-source{border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-alias-markdown-code-block);border-radius:12px;padding:12px 16px;max-height:280px;overflow:auto;margin:0}",
 				".d2d-source pre{margin:0;white-space:pre;font:var(--dsw-font-markdown-code-block-small);color:var(--dsw-alias-label-secondary)}",
 				".d2d-error{color:var(--dsw-alias-state-error-primary);font-size:12px;white-space:pre-wrap;word-break:break-word}",
+				".d2d-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:100%;padding:24px;text-align:center}",
+				".d2d-fallback-title{font-size:13px;color:var(--dsw-alias-label-secondary)}",
+				".d2d-fallback-hint{font-size:12px;color:var(--dsw-alias-label-caption)}",
 				".d2d-running{color:var(--dsw-alias-label-caption);font-size:12px;padding:8px 4px}"
 			].join("\n");
 			document.head.appendChild(tag);
@@ -158,6 +161,9 @@ window.__ModuleLoader__.load({
 			const viewState = react.useState({ w: 0, h: 0 });
 			const view = viewState[0];
 			const setView = viewState[1];
+			const imgErrorState = react.useState(false);
+			const imgError = imgErrorState[0];
+			const setImgError = imgErrorState[1];
 
 			const stageRef = react.useRef(null);
 			const imgRef = react.useRef(null);
@@ -203,6 +209,7 @@ window.__ModuleLoader__.load({
 			react.useEffect(() => {
 				setScale(1);
 				setPos({ x: 0, y: 0 });
+				setImgError(false);
 				runMeasure();
 				const onResize = () => runMeasure();
 				window.addEventListener("resize", onResize);
@@ -338,6 +345,25 @@ window.__ModuleLoader__.load({
 			const tx = g.cx + pos.x;
 			const ty = g.cy + pos.y;
 
+			// The host renders SVGs into an in-memory store and may evict old
+			// entries; an expired URL 404s and the card degrades to a notice
+			// instead of a silently blank image.
+			const stageContent = imgError
+				? react.createElement("div", { className: "d2d-fallback" },
+					react.createElement("div", { className: "d2d-fallback-title" }, "无法加载图表 SVG"),
+					react.createElement("div", { className: "d2d-fallback-hint" },
+						"宿主已释放该渲染结果（SVG 为内存存储，会随时间淘汰）。重新调用 d2_render 生成图表即可恢复。"))
+				: react.createElement("div", { className: "d2d-pan", style: { transform: "translate(" + tx + "px, " + ty + "px)" } },
+					react.createElement("img", {
+						ref: imgRef,
+						src: svgUrl,
+						alt: "D2 diagram",
+						draggable: false,
+						onLoad: onImgLoad,
+						onError: () => setImgError(true),
+						style: { width: g.W, height: "auto" }
+					}));
+
 			return react.createElement("div", { className: "d2d-card" },
 				react.createElement("div", { className: "d2d-meta" }, "D2 diagram", metaBits.join(" · ")),
 				react.createElement("div", {
@@ -354,16 +380,8 @@ window.__ModuleLoader__.load({
 						resetZoom();
 					}
 				},
-					react.createElement("div", { className: "d2d-pan", style: { transform: "translate(" + tx + "px, " + ty + "px)" } },
-						react.createElement("img", {
-							ref: imgRef,
-							src: svgUrl,
-							alt: "D2 diagram",
-							draggable: false,
-							onLoad: onImgLoad,
-							style: { width: g.W, height: "auto" }
-						})),
-					react.createElement("div", { className: "d2d-zoombar" },
+					stageContent,
+					imgError ? null : react.createElement("div", { className: "d2d-zoombar" },
 						react.createElement("button", { className: "d2d-btn d2d-icon", type: "button", title: "Zoom out", disabled: scale <= MIN_SCALE, onClick: () => zoomAt(1 / 1.25) }, "\u2212"),
 						react.createElement("span", { className: "d2d-zoom-label" }, Math.round(scale * 100) + "%"),
 						react.createElement("button", { className: "d2d-btn d2d-icon", type: "button", title: "Zoom in", disabled: scale >= MAX_SCALE, onClick: () => zoomAt(1.25) }, "+"),
