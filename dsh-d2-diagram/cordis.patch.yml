@@ -1,0 +1,8 @@
+# dsh-d2-diagram bundle patch: display-only.
+#
+# The host plane already renders D2 source to SVG and serves it at
+# /plugins/dsh-d2-diagram/svg/<id>; this package contributes the client half
+# that draws that SVG inside the `d2_render` tool card. No host rows are
+# inserted, so the patch stays empty — its presence makes the package a valid
+# profile bundle whose loader entry qualifies for the `dsh.client` scan.
+[]

@@ -1,0 +1,25 @@
+{
+  "name": "dsh-d2-diagram",
+  "description": "Inline D2 diagram display for the d2_render tool: renders the generated SVG inside the conversation tool card",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "lib/client.js",
+  "exports": {
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [],
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "license": "MIT"
+}
