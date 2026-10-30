@@ -1,0 +1,19 @@
+# dsh-workspace-categories bundle patch.
+#
+# The sidebar workspace browser (shipped package
+# `@deepseek-ai/dsh-client-ui-workspace`) owns the whole browsing region and
+# registers the session-row menu/hover seats, so a category tree cannot be
+# added beside it. This bundle therefore takes that seat over:
+#
+#   1. the shipped row is disabled, and
+#   2. this package is inserted in its place; its host half stores the
+#      category tree, and its client half is a fork of that browser with a
+#      "group by category" mode and its management surfaces.
+#
+# Removing the bundle restores the shipped row and the plain workspace list.
+- id: ui-workspace
+  disabled: true
+
+- insert:
+    - id: workspace-categories
+      name: dsh-workspace-categories

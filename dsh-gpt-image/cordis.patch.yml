@@ -1,0 +1,10 @@
+# dsh-gpt-image bundle patch.
+#
+# Inserts this package's own host half as a row: it registers the
+# `gpt_image` model tool, the embedded `dsh-gpt-image` skill, and serves
+# generated images at /plugins/dsh-gpt-image/img/<id>.<ext>. The row's
+# loader entry also qualifies the package for the `dsh.client` scan, which
+# serves the browser half at /plugins/dsh-gpt-image/client.js.
+- insert:
+    - id: gpt-image
+      name: dsh-gpt-image

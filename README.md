@@ -8,7 +8,9 @@ DeepSeek Harness Web 插件集合。每个插件一个目录，通过 profile �
 | 插件 | 说明 | 文档 |
 | --- | --- | --- |
 | [`dsh-d2-diagram`](./dsh-d2-diagram) | 把 `d2_render` 工具生成的 D2 图表内联显示在对话中，支持缩放、平移、源码查看与下载 | [中文](./dsh-d2-diagram/README.md) · [English](./dsh-d2-diagram/README.en.md) |
+| [`dsh-gpt-image`](./dsh-gpt-image) | 注册 `gpt_image` 工具调用 OpenAI gpt-image-1 生成图片，自带 `dsh-gpt-image` skill 生图指导，并在对话中内联显示生成图片，支持下载与打开 | [中文](./dsh-gpt-image/README.md) · [English](./dsh-gpt-image/README.en.md) |
 | [`dsh-mermaid-diagram`](./dsh-mermaid-diagram) | 注册 `mermaid_render` 工具，把 Mermaid 源码渲染为 SVG 并在对话中显示，支持缩放、平移、源码查看与下载 | [中文](./dsh-mermaid-diagram/README.md) · [English](./dsh-mermaid-diagram/README.en.md) |
+| [`dsh-workspace-categories`](./dsh-workspace-categories) | 给左侧工作区文件夹加上自定义分类树：视图选项里新增「按分类」分组与「管理工作区分类」，把工作区拖到分类下完成归类，用分类树代替长长的默认工作区列表 | [中文](./dsh-workspace-categories/README.md) · [English](./dsh-workspace-categories/README.en.md) |
 
 ## 目录约定
 

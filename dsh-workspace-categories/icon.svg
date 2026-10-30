@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Workspace Categories">
+  <defs>
+    <linearGradient id="dwc-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5B93F7"/>
+      <stop offset="1" stop-color="#2F5FD0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="url(#dwc-bg)"/>
+  <path d="M13 41.5V24.2c0-2 1.6-3.6 3.6-3.6h8.1l3 3.4h19.7c2 0 3.6 1.6 3.6 3.6v13.9c0 2-1.6 3.6-3.6 3.6H16.6c-2 0-3.6-1.6-3.6-3.6z"
+        fill="#FFFFFF" fill-opacity="0.94"/>
+  <path d="M13 28.2c0-2 1.6-3.6 3.6-3.6h8.1l3 3.4h19.7c2 0 3.6 1.6 3.6 3.6v1.2H13z" fill="#D7E4FF"/>
+  <g stroke="#2F5FD0" stroke-width="2.1" stroke-linecap="round" fill="none">
+    <path d="M24 36.6h5.6"/>
+    <path d="M34.4 36.6h5.6"/>
+  </g>
+  <g fill="#2F5FD0">
+    <circle cx="21.6" cy="36.6" r="3.1"/>
+    <circle cx="32" cy="36.6" r="3.1"/>
+    <circle cx="42.4" cy="36.6" r="3.1"/>
+  </g>
+  <circle cx="32" cy="45" r="2.2" fill="#8FD3FF"/>
+</svg>
